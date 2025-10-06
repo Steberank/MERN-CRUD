@@ -13,7 +13,7 @@ const UpdateUser = () => {
   const [user, setUser] = useState(users);
   const navigate = useNavigate();
   const { id } = useParams();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
