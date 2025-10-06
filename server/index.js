@@ -14,10 +14,7 @@ dotenv.config();
 const PORT = process.env.PORT || 7000;
 const MONGOURL = process.env.MONGO_URL;
 
-app.use(cors({
-  origin: ["https://mern-crud-production.up.railway.app"], // frontend
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
+app.use(cors());
 
 mongoose
   .connect(MONGOURL)
