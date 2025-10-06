@@ -16,7 +16,7 @@ const MONGOURL = process.env.MONGO_URL;
 
 app.use(cors({
   origin: ["https://mern-crud-production.up.railway.app"], // frontend
-  methods: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 mongoose
