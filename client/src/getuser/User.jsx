@@ -6,10 +6,11 @@ import toast from "react-hot-toast";
 
 const User = () => {
   const [users, setUsers] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/users");
+        const response = await axios.get(`${API_URL}/api/users`);
         setUsers(response.data);
       } catch (error) {
         console.log("Error while fetching data", error);
@@ -20,7 +21,7 @@ const User = () => {
 
   const deleteUser = async (userId) => {
     await axios
-      .delete(`http://localhost:8000/api/delete/user/${userId}`)
+      .delete(`${API_URL}/api/delete/user/${userId}`)
       .then((response) => {
         setUsers((prevUser) => prevUser.filter((user) => user._id !== userId));
         toast.success(response.data.message, { position: "top-right" });

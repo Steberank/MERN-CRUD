@@ -13,6 +13,7 @@ const UpdateUser = () => {
   const [user, setUser] = useState(users);
   const navigate = useNavigate();
   const { id } = useParams();
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
@@ -23,7 +24,7 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/user/${id}`)
+      .get(`${API_URL}/api/user/${id}`)
       .then((response) => {
         setUser(response.data);
       })
@@ -35,7 +36,7 @@ const UpdateUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .put(`http://localhost:8000/api/update/user/${id}`, user)
+      .put(`${API_URL}/api/update/user/${id}`, user)
       .then((response) => {
         toast.success(response.data.message, { position: "top-right" });
         navigate("/");
